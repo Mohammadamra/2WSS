@@ -1,0 +1,26 @@
+ // not currently used
+
+module shifter #(parameter WIDTH_IN = 32, parameter WIDTH_OUT = 32) (
+    input [WIDTH_IN-1:0] in_value,
+    output reg [WIDTH_OUT-1:0] out_value
+);
+
+always @(*) begin
+    if (WIDTH_IN == 32) begin
+        out_value = in_value << 2;
+    end else if (WIDTH_IN == 26) begin
+        out_value = {in_value, 2'b00};
+    end
+end
+
+endmodule
+
+
+// shifter #(32, 32) SHIFTER32 (.in_value(imm_ext), .out_value(shifted_immB));
+
+
+// shifter #(26, 28) SHIFTER26 (.in_value(ID_inst[25:0]), .out_value(shifted_immJ));
+
+
+//wire [31:0] shifted_immB; 
+//wire [27:0] shifted_immJ;
